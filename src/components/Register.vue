@@ -1,16 +1,20 @@
 <template>
   <div class="register">
-    <h1>Register</h1>Login
+    <h1 class="title is-1 has-text-centered">Register</h1>
       <div @keydown.enter="handleSubmit">
-      <label>
-        Email:
-        <input type='email' v-model="user.email"/>
-      </label>
-      <label>
-        Name:
-        <input type='text' v-model="user.name"/>
-      </label>
-      <button @click="handleSubmit">Submit</button>
+      <div class="field">
+        <label class="label">E-Mail</label>
+        <div class="control">
+          <input class="input" type="email" placeholder="E-Mail" v-model="user.email">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="E-Mail" v-model="user.name">
+        </div>
+      </div>
+      <button class="button is-primary" @click="handleSubmit">Submit</button>
     </div>
     <p id="errormessage">
     {{ errormessage }}
@@ -51,6 +55,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.register {
+  width: 50%;
+  margin: 0 auto;
+}
+
 #errormessage {
   margin: 10px;
 }
