@@ -32,7 +32,6 @@ export default {
     axios(options).then(response => {
       console.log(response)
       this.user = response.data
-
     }, error => {
       console.log(error)
     })
