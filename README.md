@@ -1,4 +1,5 @@
 # opensplit-vuejs
+[![Build Status](https://travis-ci.org/OpenSplit/vuejs-frontend.svg?branch=master)](https://travis-ci.org/OpenSplit/vuejs-frontend)
 
 > Webfrontend for the OpenSplit project
 
