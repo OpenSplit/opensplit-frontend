@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "10"
+
+services:
+  - docker
+
+env:
+  global:
+  - IMAGE="opensplit/vue-frontend"
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install
+
+script:
+  - npm run build
+
+after_success:
+  - docker build -t $IMAGE .
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker push $IMAGE
