@@ -11,7 +11,7 @@
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input class="input" type="text" placeholder="E-Mail" v-model="user.name">
+          <input class="input" type="text" placeholder="Nickname" v-model="user.name">
         </div>
       </div>
       <button class="button is-primary" @click="handleSubmit">Submit</button>
