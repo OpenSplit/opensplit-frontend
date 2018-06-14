@@ -3,8 +3,10 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a href="/" class="navbar-item"> Home</a>
-        <a href="/login" class="navbar-item"> Login</a>
-        <a href="/register" class="navbar-item"> Register</a>
+        <a href="/login" class="navbar-item">Login</a>
+        <a href="/register" class="navbar-item">Register</a>
+        <a href="/groups" class="navbar-item">Groups</a>
+        <a href="/logout" class="navbar-item">Logout</a>
       </div>
     </nav>
     <router-view/>

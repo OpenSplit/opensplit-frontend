@@ -17,7 +17,7 @@ before_script:
   - npm install
 
 script:
-  - npm run build
+  - npm run lint
 
 after_success:
   - docker build -t $IMAGE .

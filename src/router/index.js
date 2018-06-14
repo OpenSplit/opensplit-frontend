@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import Logout from '@/components/Logout'
 import LoginHandler from '@/components/LoginHandler'
 import Register from '@/components/Register'
 import Groups from '@/components/Groups'
@@ -20,6 +21,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: Logout
     },
     {
       path: '/login/:token',

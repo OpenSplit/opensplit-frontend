@@ -14,6 +14,7 @@ export default {
       console.log(response)
       var key = response.data.session_key
       localStorage.setItem('session_key', key)
+      this.$root.session_key = key
       location.href = '/groups'
     }, error => {
       console.log(error)
