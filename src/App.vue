@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="foo">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a href="/" class="navbar-item"> Home</a>
@@ -27,5 +27,10 @@ nav {
   text-align: center;
   color: #2c3e50;
   width: 100%;
+}
+
+#foo {
+  width: 50%;
+  margin: 0 auto;
 }
 </style>
