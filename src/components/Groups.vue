@@ -170,7 +170,7 @@ export default {
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/transactions'
       instance.get(url).then(response => {
         console.log(response)
-        this.transactions = response.data[0]
+        this.transactions = response.data
       }, error => {
         console.log(error)
       })
