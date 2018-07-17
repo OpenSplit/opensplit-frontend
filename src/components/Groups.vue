@@ -70,30 +70,25 @@
         <button class="button is-primary" @click="addExpense">Submit</button>
       </div>
 
-      <div>
-        <h3>Member</h3>
-        <ul>
-          <li v-for="m in this.selectedGroup.member" :key="m.id"> {{ m.name }} </li>
-        </ul>
+      <div class="transactions">
+        <h3 class="is-3">Transactions</h3>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Split amongst</th>
+            <th>Paid by</th>
+          </tr>
+          <tr v-for="item in this.transactions" :key="item.id">
+            <td>{{ item.date | moment("D.MM.YYYY") }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.split_amongst | join  }}</td>
+            <td>{{ item.paid_by.name  }}</td>
+          </tr>
+        </table>
       </div>
-
-      Transaction:
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Amount</th>
-          <th>Split amongst</th>
-          <th>Paid by</th>
-        </tr>
-        <tr v-for="item in this.transactions" :key="item.id">
-          <td>{{ item.date | moment("D.MM.YYYY") }}</td>
-          <td>{{ item.description }}</td>
-          <td>{{ item.amount }}</td>
-          <td>{{ item.split_amongst | join  }}</td>
-          <td>{{ item.paid_by.name  }}</td>
-        </tr>
-      </table>
     </div>
   </div>
 </template>
