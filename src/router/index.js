@@ -6,7 +6,7 @@ import Logout from '@/components/Logout'
 import LoginHandler from '@/components/LoginHandler'
 import Register from '@/components/Register'
 import Groups from '@/components/Groups'
-import Expense from '@/components/Expense'
+import Invite from '@/components/Invite'
 
 Vue.use(Router)
 Vue.use(require('vue-moment'))
@@ -52,6 +52,11 @@ export default new Router({
       path: '/groups',
       name: 'Groups',
       component: Groups
+    },
+    {
+      path: '/invite/:token',
+      name: 'Invite',
+      component: Invite
     }
   ]
 })

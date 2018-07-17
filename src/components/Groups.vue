@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content container">
     <p> Hello {{ this.user.name }} </p>
     You are in the following groups (click to select):
     <div>
@@ -8,8 +8,9 @@
 
     <div id='group-detail' v-if="this.selectedGroup">
       <h2>{{ this.selectedGroup.name }}</h2>
-      Invite people with '<b>{{ this.selectedGroup.token }}</b>'
-      <p>
+      <div class="invite">
+        Invite people with '<b>{{ this.selectedGroup.token }}</b>'.
+      </div>
 
       <div>
         <h3>Group actions</h3>
