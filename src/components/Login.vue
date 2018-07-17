@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login container is-fluid">
     <h1 class="title is-1 has-text-centered">Login</h1>
       <div @keydown.enter="handleSubmit">
       <div class="field">
@@ -47,10 +47,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.login {
-  width: 50%;
-  margin: 0 auto;
-}
 #errormessage {
   margin: 10px;
 }

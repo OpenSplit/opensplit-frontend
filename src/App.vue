@@ -1,12 +1,23 @@
 <template>
-  <div id="foo">
+  <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a href="/" class="navbar-item"> Home</a>
-        <a href="/login" class="navbar-item">Login</a>
-        <a href="/register" class="navbar-item">Register</a>
-        <a href="/groups" class="navbar-item">Groups</a>
-        <a href="/logout" class="navbar-item">Logout</a>
+        <a class="navbar-item" href="/">
+          <img src="/static/img/logo.png" alt="opensplit">
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a href="/login" class="navbar-item">Login</a>
+          <a href="/register" class="navbar-item">Register</a>
+          <a href="/groups" class="navbar-item">Groups</a>
+          <a href="/logout" class="navbar-item">Logout</a>
+        </div>
       </div>
     </nav>
     <router-view/>
@@ -17,20 +28,12 @@
 export default {
   name: 'App'
 }
+
 </script>
-
 <style>
-nav {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.navbar-menu.is-active {
+  position: absolute;
   width: 100%;
-}
-
-#foo {
-  width: 50%;
-  margin: 0 auto;
+  text-align: center;
 }
 </style>

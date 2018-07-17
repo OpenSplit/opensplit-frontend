@@ -11,6 +11,15 @@ import Expense from '@/components/Expense'
 Vue.use(Router)
 Vue.use(require('vue-moment'))
 
+var $ = require('jquery')
+
+$(document).ready(function () {
+  $('.navbar-burger').click(function () {
+    $('.navbar-burger').toggleClass('is-active')
+    $('.navbar-menu').toggleClass('is-active')
+  })
+})
+
 export default new Router({
   mode: 'history',
   routes: [
