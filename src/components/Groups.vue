@@ -3,7 +3,7 @@
     <p> Hello {{ this.user.name }} </p>
     You are in the following groups (click to select):
     <div>
-      <button v-for="(g,index) in this.groups" :key="g.id" v-on:click="selectGroup(index)">{{ g.name }}</button>
+      <button class="button" v-for="(g,index) in this.groups" :key="g.id" v-on:click="selectGroup(index)">{{ g.name }}</button>
     </div>
 
     <div id='group-detail' v-if="this.selectedGroup">
@@ -15,8 +15,8 @@
       <div>
         <h3>Group actions</h3>
         <!-- <a :href="'/expense?group=' + this.selectedGroup.id">Add Expense</a> -->
-        <button v-on:click="toggleExpense">Add Expense</button>
-        <button v-on:click="togglePayment">Add Payment</button>
+        <button class="button" v-on:click="toggleExpense">Add Expense</button>
+        <button class="button" v-on:click="togglePayment">Add Payment</button>
       </div>
 
       <div class="payment " :class="{hidden: this.payment.hidden}">
