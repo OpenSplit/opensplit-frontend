@@ -71,32 +71,19 @@
         <button class="button is-primary" @click="addExpense">Submit</button>
       </div>
 
-      <div class="transactions">
-        <h3 class="is-3">Transactions</h3>
-        <table>
-          <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Split amongst</th>
-            <th>Paid by</th>
-          </tr>
-          <tr v-for="item in this.transactions" :key="item.id">
-            <td>{{ item.date | moment("D.MM.YYYY") }}</td>
-            <td>{{ item.description }}</td>
-            <td>{{ item.amount }}</td>
-            <td>{{ item.split_amongst | join  }}</td>
-            <td>{{ item.paid_by.name  }}</td>
-          </tr>
-        </table>
-      </div>
+      <Transactions v-bind:transactions="this.transactions"></Transactions>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Transactions from './Transactions'
+
 export default {
+  components: {
+    Transactions
+  },
   name: 'Groups',
   data () {
     return {
@@ -121,12 +108,7 @@ export default {
     }
   },
   filters: {
-    join: function (value) {
-      if (!value) return ''
-      return value.map(function (elem) {
-        return elem.name
-      }).join(',')
-    }
+
   },
   methods: {
     toggleExpense: function () {
