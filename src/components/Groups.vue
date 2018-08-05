@@ -9,7 +9,7 @@
     <div id='group-detail' v-if="this.selectedGroup">
       <h2>{{ this.selectedGroup.name }}</h2>
       <div class="invite">
-        Invite people with '<b>{{ this.selectedGroup.token }}</b>'.
+        Invite people with by giving them this link: <b>{{ this.selectedGroup.token }}</b>
       </div>
 
       <div>

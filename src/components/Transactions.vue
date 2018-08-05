@@ -5,14 +5,14 @@
           <tr>
             <th>Date</th>
             <th>Description</th>
-            <th>Amount</th>
+            <th class="currency">Amount</th>
             <th>Split amongst</th>
             <th>Paid by</th>
           </tr>
           <tr v-for="item in transactions" :key="item.id">
-            <td>{{ item.date | moment("D.MM.YYYY") }}</td>
+            <td>{{ item.date | moment("DD.MM.YYYY") }}</td>
             <td>{{ item.description }}</td>
-            <td>{{ item.amount }}</td>
+            <td class="currency">{{ formatCurrency(item.amount) }} €</td>
             <td>{{ item.split_amongst | join  }}</td>
             <td>{{ item.paid_by.name  }}</td>
           </tr>
@@ -30,6 +30,18 @@ export default {
         return elem.name
       }).join(', ')
     }
+  },
+  methods: {
+    formatCurrency (value) {
+      let val = (value / 1).toFixed(2)
+      return val.toString()
+    }
   }
 }
 </script>
+
+<style>
+.currency {
+   text-align: right !important;
+}
+</style>
