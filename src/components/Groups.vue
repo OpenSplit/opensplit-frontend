@@ -6,6 +6,7 @@
       <button class="button" v-for="(g,index) in this.groups" :key="g.id" v-on:click="selectGroup(index)">{{ g.name }}</button>
     </div>
 
+<section class="section">
     <div id='group-detail' v-if="this.selectedGroup">
       <h2>{{ this.selectedGroup.name }}</h2>
       <div class="invite">
@@ -13,7 +14,39 @@
       </div>
 
       <div>
-        <h3>Group actions</h3>
+        <p class="title mytitle">Debts</p>
+        <hr />
+        <div class="columns">
+          <div class="column">
+          <!-- Debts I get -->
+          <p class="subtitle">You get</p>
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control" v-for="entry in this.selectedGroup.member[this.user.id].debts.gets" :key="entry[0]">
+              <div class="tags has-addons">
+                <span class="tag is-light">{{entry[0]}}</span>
+                <span class="tag is-success">{{entry[1]}}</span>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="column">
+        <!-- Debts I have to pay -->
+        <p class="subtitle">You have to pay</p>
+        <div class="field is-grouped is-grouped-multiline">
+          <div class="control" v-for="entry in this.selectedGroup.member[this.user.id].debts.owes" :key="entry[0]">
+            <div class="tags has-addons">
+              <span class="tag is-light">{{entry[0]}}</span>
+              <span class="tag is-danger">{{entry[1]}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+
+      <div>
+        <p class="title mytitle">Group actions</p>
+        <hr />
         <!-- <a :href="'/expense?group=' + this.selectedGroup.id">Add Expense</a> -->
         <button class="button" v-on:click="toggleExpense">Add Expense</button>
         <button class="button" v-on:click="togglePayment">Add Payment</button>
@@ -73,6 +106,7 @@
 
       <Transactions v-bind:transactions="this.transactions"></Transactions>
     </div>
+  </section>
   </div>
 </template>
 
@@ -206,4 +240,12 @@ export default {
 .hidden {
   display: none;
 }
+.mytitle {
+  margin-top: 1em;
+  margin-bottom: 0 !important;
+}
+hr {
+  margin-top: 0;
+}
+
 </style>
