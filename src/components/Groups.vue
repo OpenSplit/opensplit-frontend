@@ -21,7 +21,7 @@
           <!-- Debts I get -->
           <p class="subtitle">You get</p>
           <div class="field is-grouped is-grouped-multiline">
-            <div class="control" v-for="entry in this.selectedGroup.member[this.user.id].debts.gets" :key="entry[0]">
+            <div class="control" v-for="entry in this.personalDebts.gets" :key="entry[0]">
               <div class="tags has-addons">
                 <span class="tag is-light">{{entry[0]}}</span>
                 <span class="tag is-success">{{entry[1]}}</span>
@@ -33,7 +33,7 @@
         <!-- Debts I have to pay -->
         <p class="subtitle">You have to pay</p>
         <div class="field is-grouped is-grouped-multiline">
-          <div class="control" v-for="entry in this.selectedGroup.member[this.user.id].debts.owes" :key="entry[0]">
+          <div class="control" v-for="entry in this.personalDebts.owes" :key="entry[0]">
             <div class="tags has-addons">
               <span class="tag is-light">{{entry[0]}}</span>
               <span class="tag is-danger">{{entry[1]}}</span>
@@ -125,6 +125,7 @@ export default {
       user: {},
       groups: [],
       selectedGroup: null,
+      personalDebts: {'owes': [], 'gets': []},
       transactions: null,
       expense: {
         hidden: true,
@@ -183,6 +184,14 @@ export default {
       var instance = axios.create({
         headers: {'Authorization': this.$root.session_key}
       })
+
+      console.log(this.user.id)
+      for (let i = 0; i < this.selectedGroup.member.length; i++) {
+        console.log(this.selectedGroup.member[i].id)
+        if (this.user.id === this.selectedGroup.member[i].id) {
+          this.personalDebts = this.selectedGroup.member[i].debts
+        }
+      }
 
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/transactions'
       instance.get(url).then(response => {
