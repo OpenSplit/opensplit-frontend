@@ -15,13 +15,12 @@ branches:
     - development
 
 before_script:
-  - yarn install
+  - npm install
 
 script:
-  - yarn run lint
+  - npm run lint
 
 after_success:
-  - set -eu
   - if [ ${TRAVIS_BRANCH} == master ] ; then ENV=production IMAGE_TAG=stable; else ENV=staging IMAGE_TAG=development; fi
   - cp config/$ENV.js config/prod.env.js
   - docker build -t $IMAGE:$IMAGE_TAG .
