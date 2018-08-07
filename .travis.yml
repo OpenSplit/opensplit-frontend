@@ -15,19 +15,13 @@ branches:
     - development
 
 before_script:
-  - npm install
+  - yarn install
 
 script:
-  - npm run lint
+  - yarn run lint
 
 after_success:
-  - if [ ${TRAVIS_BRANCH} == master ]; then
-        ENV=production
-        IMAGE_TAG=stable
-    else;
-        ENV=staging
-        IMAGE_TAG=development
-    fi
+  - if [ ${TRAVIS_BRANCH} == master ] ; then ENV=production IMAGE_TAG=stable; else ENV=staging IMAGE_TAG=development; fi
   - cp config/$ENV.js config/production.env.js
   - docker build -t $IMAGE:$IMAGE_TAG .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
