@@ -21,8 +21,9 @@ script:
   - yarn run lint
 
 after_success:
+  - set -eu
   - if [ ${TRAVIS_BRANCH} == master ] ; then ENV=production IMAGE_TAG=stable; else ENV=staging IMAGE_TAG=development; fi
-  - cp config/$ENV.js config/production.env.js
+  - cp config/$ENV.js config/prod.env.js
   - docker build -t $IMAGE:$IMAGE_TAG .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push $IMAGE:$IMAGE_TAG
