@@ -7,11 +7,12 @@ services:
 
 env:
   global:
-  - IMAGE="opensplit/vue-frontend"
+  - IMAGE="opensplit/frontend"
 
 branches:
   only:
     - master
+    - development
 
 before_script:
   - npm install
@@ -20,6 +21,14 @@ script:
   - npm run lint
 
 after_success:
-  - docker build -t $IMAGE .
+  - if [ ${TRAVIS_BRANCH} == master ]; then
+        ENV=production
+        IMAGE_TAG=stable
+    else;
+        ENV=staging
+        IMAGE_TAG=development
+    fi
+  - cp config/$ENV.js config/production.env.js
+  - docker build -t $IMAGE:$IMAGE_TAG .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - docker push $IMAGE
+  - docker push $IMAGE:$IMAGE_TAG
