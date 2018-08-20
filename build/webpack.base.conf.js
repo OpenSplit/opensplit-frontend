@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const { VueLoaderPlugin } = require('vue-loader')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -47,6 +48,13 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
@@ -88,5 +96,9 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
+  ]
 }

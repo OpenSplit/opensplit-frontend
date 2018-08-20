@@ -31,6 +31,7 @@ export default {
 
 </script>
 <style>
+@import './../node_modules/bulma/css/bulma.css';
 .navbar-menu.is-active {
   position: absolute;
   width: 100%;
