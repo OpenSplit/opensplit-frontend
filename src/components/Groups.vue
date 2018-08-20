@@ -1,9 +1,22 @@
 <template>
   <div class="content container">
+
     <p> Hello {{ this.user.name }} </p>
     You are in the following groups (click to select):
     <div>
       <button class="button" v-for="(g,index) in this.groups" :key="g.id" v-on:click="selectGroup(index)">{{ g.name }}</button>
+    </div>
+
+    <div>
+      <div class="field">
+        <label class="label">Create New Group:</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Group Name" v-model="create.name">
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-primary" @click="createNewGroup">Submit</button>
+      </div>
     </div>
 
 <section class="section">
@@ -139,6 +152,9 @@ export default {
         amount: 0,
         receiver: null,
         sender: null
+      },
+      create: {
+        name: null
       }
     }
   },
@@ -146,6 +162,18 @@ export default {
 
   },
   methods: {
+    createNewGroup: function () {
+      var instance = axios.create({
+        headers: {'Authorization': this.$root.session_key}
+      })
+
+      var url = process.env.API_ROOT + '/groups'
+      instance.post(url, this.create).then(response => {
+        console.log(response)
+      }, error => {
+        console.log(error)
+      })
+    },
     toggleExpense: function () {
       this.expense.hidden = !this.expense.hidden
     },
