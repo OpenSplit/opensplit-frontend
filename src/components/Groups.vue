@@ -67,16 +67,17 @@
 
       <div class="payment " :class="{hidden: this.payment.hidden}">
         <h4 class="title is-4 has-text-centered">Add Payment</h4>
+        <p>I received:</p>
         <div class="field">
-          <label class="label">Amount</label>
           <div class="control">
             <input class="input" type="number" placeholder="0.00" step='0.01' v-model="payment.amount">
           </div>
         </div>
+
+        <p>from:</p>
         <div class="field">
-          <label class="label">Receiver</label>
           <div class="select">
-            <select v-model="payment.receiver">
+            <select v-model="payment.sender">
               <option v-for="m in this.selectedGroup.member" :key="m.id" :value="m.id">{{ m.name }}</option>
             </select>
           </div>
@@ -199,7 +200,7 @@ export default {
       })
 
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/payments'
-      this.payment.sender = this.user.id
+      this.payment.receiver = this.user.id
       instance.post(url, this.payment).then(response => {
         console.log(response)
         this.payment.hidden = true
