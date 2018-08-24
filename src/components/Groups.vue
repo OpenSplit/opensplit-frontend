@@ -69,8 +69,11 @@
         <h4 class="title is-4 has-text-centered">Add Payment</h4>
         <p>I received:</p>
         <div class="field">
-          <div class="control">
+          <div class="control has-icons-right">
             <input class="input" type="number" placeholder="0.00" step='0.01' v-model="payment.amount">
+            <span class="icon is-small is-right">
+              <i class="fas fa-euro-sign"></i>
+            </span>
           </div>
         </div>
 
