@@ -1,10 +1,10 @@
 FROM node:10 as builder
 WORKDIR /app
 COPY package.json /app/
-COPY yarn.lock /app/
-RUN yarn install
+COPY package-lock.json /app/
+RUN npm install
 COPY . /app
-RUN yarn run build
+RUN npm run build
 
 # Stage 2
 FROM nginx:mainline-alpine
