@@ -27,3 +27,7 @@ after_success:
   - docker build -t $IMAGE:$IMAGE_TAG .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push $IMAGE:$IMAGE_TAG
+
+notifications:
+  email: false
+
