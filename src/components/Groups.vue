@@ -146,14 +146,14 @@ export default {
       transactions: null,
       expense: {
         hidden: true,
-        amount: 0,
+        amount: null,
         description: '',
         split_amongst: [],
         paid_by: null
       },
       payment: {
         hidden: true,
-        amount: 0,
+        amount: null,
         receiver: null,
         sender: null
       },
