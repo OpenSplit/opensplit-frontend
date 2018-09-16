@@ -37,7 +37,7 @@
             <div class="control" v-for="entry in this.personalDebts.gets" :key="entry[0]">
               <div class="tags has-addons">
                 <span class="tag is-light">{{entry[0]}}</span>
-                <span class="tag is-success">{{entry[1]}}</span>
+                <span class="tag is-success">{{entry[1]}} €</span>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
           <div class="control" v-for="entry in this.personalDebts.owes" :key="entry[0]">
             <div class="tags has-addons">
               <span class="tag is-light">{{entry[0]}}</span>
-              <span class="tag is-danger">{{entry[1]}}</span>
+              <span class="tag is-danger">{{entry[1]}} €</span>
             </div>
           </div>
         </div>
