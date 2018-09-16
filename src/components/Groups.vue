@@ -173,7 +173,6 @@ export default {
 
       var url = process.env.API_ROOT + '/groups'
       instance.post(url, this.create).then(response => {
-        console.log(response)
       }, error => {
         console.log(error)
       })
@@ -188,7 +187,6 @@ export default {
 
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/transactions'
       instance.post(url, this.expense).then(response => {
-        console.log(response)
         this.expense.hidden = true
       }, error => {
         console.log(error)
@@ -205,7 +203,6 @@ export default {
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/payments'
       this.payment.receiver = this.user.id
       instance.post(url, this.payment).then(response => {
-        console.log(response)
         this.payment.hidden = true
       }, error => {
         console.log(error)
@@ -217,9 +214,7 @@ export default {
         headers: {'Authorization': this.$root.session_key}
       })
 
-      console.log(this.user.id)
       for (let i = 0; i < this.selectedGroup.member.length; i++) {
-        console.log(this.selectedGroup.member[i].id)
         if (this.user.id === this.selectedGroup.member[i].id) {
           this.personalDebts = this.selectedGroup.member[i].debts
         }
@@ -227,7 +222,6 @@ export default {
 
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/transactions'
       instance.get(url).then(response => {
-        console.log(response)
         this.transactions = response.data
       }, error => {
         console.log(error)
@@ -243,7 +237,6 @@ export default {
 
       var url = process.env.API_ROOT + '/checktoken'
       instance.get(url).then(response => {
-        console.log('jup')
       }, _ => {
         location.href = '/login'
         localStorage.removeItem('session_key')
@@ -260,7 +253,6 @@ export default {
 
     var url = process.env.API_ROOT + '/users'
     instance.get(url).then(response => {
-      console.log(response)
       this.user = response.data
     }, error => {
       console.log(error)
@@ -268,7 +260,6 @@ export default {
 
     url = process.env.API_ROOT + '/groups'
     instance.get(url).then(response => {
-      console.log(response)
       this.groups = response.data
     }, error => {
       console.log(error)

@@ -39,7 +39,6 @@ export default {
     handleSubmit () {
       var url = process.env.API_ROOT + '/users'
       axios.post(url, this.user).then(response => {
-        console.log(response)
         this.errormessage = 'Success. Redirecting to login page'
         document.getElementById('errormessage').classList.add('success')
         location.href = '/login'

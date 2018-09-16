@@ -11,7 +11,6 @@ export default {
   mounted () {
     var url = process.env.API_ROOT + '/session/' + this.$route.params.token
     axios.get(url).then(response => {
-      console.log(response)
       var key = response.data.session_key
       localStorage.setItem('session_key', key)
       this.$root.session_key = key

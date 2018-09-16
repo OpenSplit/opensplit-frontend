@@ -32,7 +32,6 @@ export default {
     handleSubmit () {
       var url = process.env.API_ROOT + '/login/' + this.user.email
       axios.get(url).then(response => {
-        console.log(response)
         document.getElementById('errormessage').classList.add('success')
         this.errormessage = 'Success. Please check your inbox.'
       }, error => {

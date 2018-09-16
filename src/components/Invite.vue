@@ -30,7 +30,6 @@ export default {
       })
       var url = process.env.API_ROOT + '/groups/join/' + this.token
       instance.post(url).then(response => {
-        console.log(response)
         location.href = '/groups'
       }, error => {
         console.log(error)
@@ -46,7 +45,6 @@ export default {
 
       var url = process.env.API_ROOT + '/checktoken'
       instance.get(url).then(response => {
-        console.log('jup')
       }, _ => {
         location.href = '/login'
         localStorage.removeItem('session_key')
@@ -64,7 +62,6 @@ export default {
     this.token = this.$route.params.token
     var url = process.env.API_ROOT + '/groups/join/' + this.token
     instance.get(url).then(response => {
-      console.log(response)
       if (response.data.is_member) {
         location.href = '/groups'
       }
