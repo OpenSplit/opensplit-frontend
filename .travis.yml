@@ -13,12 +13,14 @@ branches:
   only:
     - master
     - development
+    - /^greenkeeper/.*$/
 
 before_script:
   - npm install
 
 script:
   - npm run lint
+  - npm run build
 
 after_success:
   - if [ ${TRAVIS_BRANCH} == master ] ; then ENV=production IMAGE_TAG=stable; else ENV=staging IMAGE_TAG=development; fi
@@ -26,3 +28,7 @@ after_success:
   - docker build -t $IMAGE:$IMAGE_TAG .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push $IMAGE:$IMAGE_TAG
+
+notifications:
+  email: false
+

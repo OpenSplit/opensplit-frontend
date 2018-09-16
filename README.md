@@ -1,5 +1,5 @@
 # opensplit-vuejs
-[![Build Status](https://travis-ci.org/OpenSplit/vuejs-frontend.svg?branch=master)](https://travis-ci.org/OpenSplit/vuejs-frontend)
+[![Build Status](https://travis-ci.org/OpenSplit/vuejs-frontend.svg?branch=master)](https://travis-ci.org/OpenSplit/vuejs-frontend) [![Greenkeeper badge](https://badges.greenkeeper.io/OpenSplit/opensplit-frontend.svg)](https://greenkeeper.io/)
 
 > new fancy webfrontend for the OpenSplit project
 

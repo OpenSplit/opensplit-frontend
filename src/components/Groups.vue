@@ -1,9 +1,22 @@
 <template>
   <div class="content container">
+
     <p> Hello {{ this.user.name }} </p>
     You are in the following groups (click to select):
     <div>
       <button class="button" v-for="(g,index) in this.groups" :key="g.id" v-on:click="selectGroup(index)">{{ g.name }}</button>
+    </div>
+
+    <div>
+      <div class="field">
+        <label class="label">Create New Group:</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Group Name" v-model="create.name">
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-primary" @click="createNewGroup">Submit</button>
+      </div>
     </div>
 
 <section class="section">
@@ -54,16 +67,20 @@
 
       <div class="payment " :class="{hidden: this.payment.hidden}">
         <h4 class="title is-4 has-text-centered">Add Payment</h4>
+        <p>I received:</p>
         <div class="field">
-          <label class="label">Amount</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input class="input" type="number" placeholder="0.00" step='0.01' v-model="payment.amount">
+            <span class="icon is-small is-right">
+              <i class="fas fa-euro-sign"></i>
+            </span>
           </div>
         </div>
+
+        <p>from:</p>
         <div class="field">
-          <label class="label">Receiver</label>
           <div class="select">
-            <select v-model="payment.receiver">
+            <select v-model="payment.sender">
               <option v-for="m in this.selectedGroup.member" :key="m.id" :value="m.id">{{ m.name }}</option>
             </select>
           </div>
@@ -139,6 +156,9 @@ export default {
         amount: 0,
         receiver: null,
         sender: null
+      },
+      create: {
+        name: null
       }
     }
   },
@@ -146,6 +166,18 @@ export default {
 
   },
   methods: {
+    createNewGroup: function () {
+      var instance = axios.create({
+        headers: {'Authorization': this.$root.session_key}
+      })
+
+      var url = process.env.API_ROOT + '/groups'
+      instance.post(url, this.create).then(response => {
+        console.log(response)
+      }, error => {
+        console.log(error)
+      })
+    },
     toggleExpense: function () {
       this.expense.hidden = !this.expense.hidden
     },
@@ -171,7 +203,7 @@ export default {
       })
 
       var url = process.env.API_ROOT + '/groups/' + this.selectedGroup.id + '/payments'
-      this.payment.sender = this.user.id
+      this.payment.receiver = this.user.id
       instance.post(url, this.payment).then(response => {
         console.log(response)
         this.payment.hidden = true
