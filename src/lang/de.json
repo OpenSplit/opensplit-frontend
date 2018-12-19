@@ -1,0 +1,25 @@
+{
+    "common": {
+        "hello": "Hallo"
+    },
+    "actions": {
+        "submit": "Absenden"
+    },
+    "navigation": {
+        "login": "Login",
+        "register": "Registrieren",
+        "groups": "Gruppen",
+        "logout": "Logout"
+    },
+    "groups": {
+        "intro": "Du bist in folgenden Gruppen"
+    },
+    "transactions": {
+        "title": "Transaktionen",
+        "date": "Datum",
+        "description": "Beschreibung",
+        "amount": "Betrag",
+        "split": "Split amongst",
+        "paid": "Bezahlt von"
+    }
+}

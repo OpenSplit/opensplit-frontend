@@ -5,24 +5,23 @@
 
 <script>
 import axios from 'axios'
-
 export default {
-  name: 'LoginHandler',
-  mounted () {
-    var url = process.env.API_ROOT + '/session/' + this.$route.params.token
-    axios.get(url).then(response => {
-      var key = response.data.session_key
-      localStorage.setItem('session_key', key)
-      this.$root.session_key = key
-      location.href = '/groups'
-    }, error => {
-      console.log(error)
-      location.href = '/login'
-    })
-  }
+    name: 'LoginHandler',
+    mounted () {
+        if(this.$route.params.token) {
+            var url = process.env.VUE_APP_API + '/session/' + this.$route.params.token
+            axios.get(url).then(response => {
+                var key = response.data.session_key
+                console.log('session key:'+key)
+                localStorage.setItem('session_key', key)
+                this.$router.push('/groups')
+            }, error => {
+                console.log(error)
+            })
+        }
+    }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>

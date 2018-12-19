@@ -1,61 +1,72 @@
-<template>
-    <div class="transactions">
-        <p class="title mytitle">Transactions</p>
-        <hr />
-        <table>
-          <tr>
-            <th>Date</th>
-            <th>Description</th>
-            <th class="currency">Amount</th>
-            <th>Split amongst</th>
-            <th>Paid by</th>
-            <th></th>
-          </tr>
-          <tr v-for="item in transactions" :key="item.id">
-            <td>{{ item.date | moment("DD.MM.YYYY") }}</td>
-            <td>{{ item.description }}</td>
-            <td class="currency">{{ formatCurrency(item.amount) }} €</td>
-            <td>{{ item.split_amongst | join  }}</td>
-            <td>{{ item.paid_by.name  }}</td>
-            <td><a class="delete" v-on:click="deleteTransaction( item.id )" ></a></td>
-          </tr>
-        </table>
-      </div>
+<template lang="pug">
+    .transactions
+        p.title.mytitle {{ $t('transactions.title') }}
+        table
+            tr
+                th {{ $t('transactions.date') }}
+                th {{ $t('transactions.description') }}
+                th.currency {{ $t('transactions.amount') }}
+                th {{ $t('transactions.split') }}
+                th {{ $t('transactions.paid') }}
+                th
+            tr(v-for='item in this.transactions', :key='item.id')
+                td {{ item.date | moment("DD.MM.YYYY") }}
+                td {{ item.description }}
+                td.currency {{ formatCurrency(item.amount) }} €
+                td {{ item.split_amongst | join }}
+                td {{ item.paid_by.name }}
+                td
+                    a.delete(v-on:click='deleteTransaction( item.id )')
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  props: ['transactions'],
-  filters: {
-    join: function (value) {
-      if (!value) return ''
-      return value.map(function (elem) {
-        return elem.name
-      }).join(', ')
-    }
-  },
-  methods: {
-    formatCurrency (value) {
-      let val = (value / 1).toFixed(2)
-      return val.toString()
+    data() {
+        return {
+            transactions: []
+        }
     },
-    deleteTransaction (id) {
-      console.log('This would delete the transaction with the id: ' + id)
+    props: ['id'],
+    beforeMount() {
+        var session_key = localStorage.getItem('session_key')
+        var instance = axios.create({
+            headers: {'Authorization': session_key}
+        })
+        var url = process.env.VUE_APP_API + '/groups/' + this.id + '/transactions'
+        instance.get(url)
+        .then(response => {
+            this.transactions = response.data
+        })
+    },
+    filters: {
+        join: function (value) {
+        if (!value) return ''
+        return value.map(function (elem) {
+            return elem.name
+        }).join(', ')
+        }
+    },
+    methods: {
+        formatCurrency (value) {
+            var val = (value / 1).toFixed(2)
+            return val.toString()
+        },
+        deleteTransaction (id) {
+            console.log('This would delete the transaction with the id: ' + id)
+        }
     }
-  }
 }
 </script>
 
-<style>
-.currency {
-   text-align: right !important;
-}
+<style lang="sass">
+.currency
+    text-align: right !important
 
-.mytitle {
-  margin-top: 1em;
-  margin-bottom: 0 !important;
-}
-hr {
-  margin-top: 0;
-}
+.mytitle
+    margin-top: 1em
+    margin-bottom: 0 !important
+
+hr
+    margin-top: 0;
 </style>
