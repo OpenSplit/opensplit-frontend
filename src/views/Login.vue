@@ -27,10 +27,10 @@ export default {
     methods: {
         handleSubmit () {
             var url = process.env.VUE_APP_API + '/login/' + this.user.email
-            axios.get(url).then(response => {
+            axios.get(url).then(() => {
                 document.getElementById('errormessage').classList.add('success')
                 this.errormessage = 'Success. Please check your inbox.'
-            }, error => {
+            }, () => {
                 document.getElementById('errormessage').classList.add('error')
                 this.errormessage = 'Something went wrong. Please try again'
             })
