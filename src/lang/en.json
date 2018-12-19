@@ -12,7 +12,8 @@
         "logout": "Logout"
     },
     "groups": {
-        "intro": "You are in the following groups"
+        "intro": "You are in the following groups",
+        "invite": "Invite people with by giving them this link:"
     },
     "transactions": {
         "title": "Transactions",

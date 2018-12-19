@@ -3,7 +3,13 @@
     h1 {{ group.name }}
     ul
         li(v-for='m in group.member') {{ m.name }}
+
     Transactions(v-bind:id="group.id")
+
+    .invite
+        | {{ $t('groups.invite') }}
+        br
+        b {{ group.token }}
 
 </template>
 
@@ -38,4 +44,8 @@ ul
     li
         margin-top: 0
         padding: 0 .5rem
+.invite
+    margin: 1rem 0
+    padding: .5rem
+    background-color: lightgrey
 </style>
