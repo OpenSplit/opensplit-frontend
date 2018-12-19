@@ -12,11 +12,8 @@ export default {
             var url = process.env.VUE_APP_API + '/session/' + this.$route.params.token
             axios.get(url).then(response => {
                 var key = response.data.session_key
-                console.log('session key:'+key)
                 localStorage.setItem('session_key', key)
                 this.$router.push('/groups')
-            }, error => {
-                console.log(error)
             })
         }
     }

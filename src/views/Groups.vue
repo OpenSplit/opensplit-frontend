@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -23,10 +22,6 @@ export default {
         }
     },
     created () {
-        var session_key = localStorage.getItem('session_key')
-        var instance = axios.create({
-            headers: {'Authorization': session_key}
-        })
         this.$store.dispatch('user')
         this.$store.dispatch('groups')
     }

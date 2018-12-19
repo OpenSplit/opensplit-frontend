@@ -16,7 +16,7 @@
                 td {{ item.split_amongst | join }}
                 td {{ item.paid_by.name }}
                 td
-                    a.delete(v-on:click='deleteTransaction( item.id )')
+                    //- a.delete(v-on:click='deleteTransaction( item.id )')
 </template>
 
 <script>
@@ -52,9 +52,9 @@ export default {
             var val = (value / 1).toFixed(2)
             return val.toString()
         },
-        deleteTransaction (id) {
-            console.log('This would delete the transaction with the id: ' + id)
-        }
+        // deleteTransaction (id) {
+        //     console.log('This would delete the transaction with the id: ' + id)
+        // }
     }
 }
 </script>
