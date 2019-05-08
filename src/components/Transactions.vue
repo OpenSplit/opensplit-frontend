@@ -1,22 +1,13 @@
 <template lang="pug">
     .transactions
-        p.title.mytitle {{ $t('transactions.title') }}
-        table
-            tr
-                th {{ $t('transactions.date') }}
-                th {{ $t('transactions.description') }}
-                th.currency {{ $t('transactions.amount') }}
-                th {{ $t('transactions.split') }}
-                th {{ $t('transactions.paid') }}
-                th
-            tr(v-for='item in this.transactions', :key='item.id')
-                td {{ item.date | moment("DD.MM.YYYY") }}
-                td {{ item.description }}
-                td.currency {{ formatCurrency(item.amount) }} €
-                td {{ item.split_amongst | join }}
-                td {{ item.paid_by.name }}
-                td
-                    //- a.delete(v-on:click='deleteTransaction( item.id )')
+        .title.mytitle {{ $t('transactions.title') }}
+        v-data-table(:headers="headers" :items="transactions" class="elevation-1")
+            template(v-slot:items='props')
+                td.text-xs-left {{ props.item.date | moment("DD.MM.YYYY") }}
+                td.text-xs-left {{ props.item.description }}
+                td.text-xs-left {{ props.item.amount }}
+                td.text-xs-left {{ props.item.split_amongst | join }}
+                td.text-xs-left {{ props.item.paid_by.name }}
 </template>
 
 <script>
@@ -24,6 +15,13 @@ import axios from 'axios'
 export default {
     data() {
         return {
+            headers: [
+                { text: `${this.$t('transactions.date')}`, align: 'left', sortable: false, value: 'date' },
+                { text: `${this.$t('transactions.description')}`, align: 'left', sortable: false, value: 'description' },
+                { text: `${this.$t('transactions.amount')}`, align: 'left', sortable: false, value: 'amount' },
+                { text: `${this.$t('transactions.split')}`, align: 'left', sortable: false, value: 'split_amongst' },
+                { text: `${this.$t('transactions.paid')}`, align: 'left', sortable: false, value: 'paid_by' },
+            ],
             transactions: []
         }
     },
@@ -51,10 +49,7 @@ export default {
         formatCurrency (value) {
             var val = (value / 1).toFixed(2)
             return val.toString()
-        },
-        // deleteTransaction (id) {
-        //     console.log('This would delete the transaction with the id: ' + id)
-        // }
+        }
     }
 }
 </script>
@@ -64,8 +59,7 @@ export default {
     text-align: right !important
 
 .mytitle
-    margin-top: 1em
-    margin-bottom: 0 !important
+    margin: 1.5rem auto 1rem
 
 hr
     margin-top: 0;

@@ -1,13 +1,19 @@
 <template lang="pug">
-.group.container.content
+.group.container.content(v-if='group')
     h1 {{ group.name }}
-    ul
-        li(v-for='m in group.member') {{ m.name }}
+    v-chip(v-for='m in group.member') {{ m.name }}
 
     Transactions(v-bind:id="group.id")
 
+    div
+        p.title.mytitle {{ $t('group.actions') }}
+        v-btn
+            router-link(:to="group.id + '/expenses/new'") {{ $t('expense.title') }}
+        v-btn
+            router-link(:to="group.id + '/payment/new'") {{ $t('payment.title') }}
+
     .invite
-        | {{ $t('groups.invite') }}
+        | {{ $t('group.invite') }}:
         br
         b {{ group.token }}
 
@@ -38,12 +44,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-ul
-    list-style-type: none
-    display: flex
-    li
-        margin-top: 0
-        padding: 0 .5rem
 .invite
     margin: 1rem 0
     padding: .5rem

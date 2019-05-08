@@ -1,24 +1,25 @@
 <template lang="pug">
     #app
-        Navigation
-        router-view
-        LangSwitch
+        v-app
+            Navigation
+            Message
+            router-view
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue'
-import LangSwitch from "@/components/LangSwitch";
+import Message from './components/Message.vue'
 export default {
     name: 'app',
     components: {
         Navigation,
-        LangSwitch
+        Message
     }
 }
 </script>
 
 <style lang="sass">
-@import './../node_modules/bulma/css/bulma.css';
+// @import './../node_modules/bulma/css/bulma.css';
 @import './../node_modules/@fortawesome/fontawesome-free/css/all.css';
 #app
     font-family: 'Avenir', Helvetica, Arial, sans-serif

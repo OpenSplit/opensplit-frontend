@@ -1,9 +1,15 @@
 {
     "common": {
-        "hello": "Hello"
+        "hello": "Hello",
+        "required": "is required"
     },
     "actions": {
-        "submit": "Submit"
+        "submit": "Submit",
+        "cancel": "Cancel"
+    },
+    "login": {
+        "login": "Login",
+        "email": "E-Mail"
     },
     "navigation": {
         "login": "Login",
@@ -15,12 +21,24 @@
         "intro": "You are in the following groups",
         "invite": "Invite people with by giving them this link:"
     },
+    "group": {
+        "actions": "Group actions",
+        "invite": "Invite others to this group"
+    },
     "transactions": {
         "title": "Transactions",
         "date": "Date",
         "description": "Description",
         "amount": "Amount",
         "split": "Split amongst",
-        "paid": "Paid by"
+        "paid": "Paid by",
+        "name": "Name"
+    },
+    "expense": {
+        "title": "Add Expense"
+    },
+    "payment": {
+        "title": "Add Payment",
+        "sender": "Sender"
     }
 }

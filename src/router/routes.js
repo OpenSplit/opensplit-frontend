@@ -1,19 +1,10 @@
-import { i18n } from "./../plugins/i18n.js";
 import Home from "@/views/Login.vue";
 
 export default [
     {
-        path: "/:lang",
+        path: "/",
         component: {
             template: "<router-view></router-view>"
-        },
-        beforeEnter(to, from, next) {
-            const lang = to.params.lang;
-            if (!["en", "de"].includes(lang)) return next("en");
-            if (i18n.locale !== lang) {
-                i18n.locale = lang;
-            }
-            return next();
         },
         children: [
             {
@@ -40,10 +31,22 @@ export default [
                     import(/* webpackChunkName: "about" */ "@/views/Groups.vue")
             },
             {
-                path: 'group/:id',
+                path: 'groups/:id',
                 name: 'group',
                 component: () =>
                     import(/* webpackChunkName: "about" */ "@/views/Group.vue")
+            },
+            {
+                path: 'groups/:id/expenses/new',
+                name: 'expense',
+                component: () =>
+                    import(/* webpackChunkName: "about" */ "@/views/Expense.vue")
+            },
+            {
+                path: 'groups/:id/payment/new',
+                name: 'payment',
+                component: () =>
+                    import(/* webpackChunkName: "about" */ "@/views/Payment.vue")
             }
         ]
     }
