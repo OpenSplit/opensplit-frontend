@@ -81,9 +81,9 @@ export default new Vuex.Store({
                 })
 
                 var url = '/groups/' + data.group + '/transactions'
-                instance.post(url, data).then(response => {
+                instance.post(url, data).then(() => {
                     commit('notification', { 'message': 'Expense successfully added', 'type': 'success' })
-                }, error => {
+                }).catch(() => {
                     commit('notification', { 'message': 'Error adding expense', 'type': 'error' })
                 })
             }
@@ -96,9 +96,9 @@ export default new Vuex.Store({
                 })
 
                 var url = '/groups/' + data.group + '/payments'
-                instance.post(url, data).then(response => {
+                instance.post(url, data).then(() => {
                     commit('notification', { 'message': 'Payment successfully added', 'type': 'success' })
-                }, error => {
+                }).catch(() => {
                     commit('notification', { 'message': 'Error adding payment', 'type': 'error' })
                 })
             }
