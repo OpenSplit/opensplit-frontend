@@ -5,7 +5,8 @@
     },
     "actions": {
         "submit": "Absenden",
-        "cancel": "Abbrechen"
+        "cancel": "Abbrechen",
+        "back": "Zurück"
     },
     "login": {
         "login": "Login",
@@ -40,5 +41,10 @@
     "payment": {
         "title": "Geldeingang hinzufügen",
         "sender": "Sender"
+    },
+    "debt": {
+        "title": "Schulden",
+        "gets": "Bekommen von",
+        "owes": "Zu zahlen an"
     }
 }

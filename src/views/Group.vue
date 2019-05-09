@@ -11,6 +11,8 @@
             router-link(:to="group.id + '/expenses/new'") {{ $t('expense.title') }}
         v-btn
             router-link(:to="group.id + '/payment/new'") {{ $t('payment.title') }}
+        v-btn
+            router-link(:to="group.id + '/debts'") {{ $t('debt.title') }}
 
     .invite
         | {{ $t('group.invite') }}:

@@ -5,7 +5,8 @@
     },
     "actions": {
         "submit": "Submit",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "back": "Back"
     },
     "login": {
         "login": "Login",
@@ -40,5 +41,10 @@
     "payment": {
         "title": "Add Payment",
         "sender": "Sender"
+    },
+    "debt": {
+        "title": "Debts",
+        "gets": "Gets",
+        "owes": "Owes"
     }
 }

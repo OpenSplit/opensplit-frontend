@@ -47,6 +47,12 @@ export default [
                 name: 'payment',
                 component: () =>
                     import(/* webpackChunkName: "about" */ "@/views/Payment.vue")
+            },
+            {
+                path: 'groups/:id/debts',
+                name: 'debts',
+                component: () =>
+                    import(/* webpackChunkName: "about" */ "@/views/Debts.vue")
             }
         ]
     }
