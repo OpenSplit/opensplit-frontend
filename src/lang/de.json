@@ -1,0 +1,50 @@
+{
+    "common": {
+        "hello": "Hallo",
+        "required": "ist ein Pflichtfeld"
+    },
+    "actions": {
+        "submit": "Absenden",
+        "cancel": "Abbrechen",
+        "back": "Zurück"
+    },
+    "login": {
+        "login": "Login",
+        "email": "E-Mail"
+    },
+    "navigation": {
+        "login": "Login",
+        "register": "Registrieren",
+        "groups": "Gruppen",
+        "logout": "Logout"
+    },
+    "groups": {
+        "intro": "Du bist in folgenden Gruppen",
+        "invite": "Über folgenden Link kannst du Leute zu dieser Gruppe einladen:"
+    },
+    "group": {
+        "actions": "Gruppenaktivitäten",
+        "invite": "Lade andere zu dieser Gruppe ein"
+    },
+    "transactions": {
+        "title": "Transaktionen",
+        "date": "Datum",
+        "description": "Beschreibung",
+        "amount": "Betrag",
+        "split": "Split amongst",
+        "paid": "Bezahlt von",
+        "name": "Name"
+    },
+    "expense": {
+        "title": "Ausgabe hinzufügen"
+    },
+    "payment": {
+        "title": "Geldeingang hinzufügen",
+        "sender": "Sender"
+    },
+    "debt": {
+        "title": "Schulden",
+        "gets": "Bekommen von",
+        "owes": "Zu zahlen an"
+    }
+}

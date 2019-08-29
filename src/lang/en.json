@@ -1,0 +1,50 @@
+{
+    "common": {
+        "hello": "Hello",
+        "required": "is required"
+    },
+    "actions": {
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "back": "Back"
+    },
+    "login": {
+        "login": "Login",
+        "email": "E-Mail"
+    },
+    "navigation": {
+        "login": "Login",
+        "register": "Register",
+        "groups": "Groups",
+        "logout": "Logout"
+    },
+    "groups": {
+        "intro": "You are in the following groups",
+        "invite": "Invite people with by giving them this link:"
+    },
+    "group": {
+        "actions": "Group actions",
+        "invite": "Invite others to this group"
+    },
+    "transactions": {
+        "title": "Transactions",
+        "date": "Date",
+        "description": "Description",
+        "amount": "Amount",
+        "split": "Split amongst",
+        "paid": "Paid by",
+        "name": "Name"
+    },
+    "expense": {
+        "title": "Add Expense"
+    },
+    "payment": {
+        "title": "Add Payment",
+        "sender": "Sender"
+    },
+    "debt": {
+        "title": "Debts",
+        "gets": "Gets",
+        "owes": "Owes"
+    }
+}
