@@ -1,5 +1,6 @@
 ### Vuejs ###
-node_modules
+node_modules/
 .DS_Store
 docs/_book
 test/
+yarn-error.log
