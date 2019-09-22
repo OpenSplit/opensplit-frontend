@@ -5,6 +5,9 @@ node_js:
 services:
   - docker
 
+git:
+  depth: false
+
 env:
   global:
   - IMAGE="opensplit/frontend"
@@ -27,6 +30,16 @@ after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push $IMAGE:$IMAGE_TAG
 
+deploy:
+ - provider: script
+   script: curl -X POST $WEBHOOK_DEV
+   on:
+     branch: development
+
+ - provider: script
+   script: curl -X POST $WEBHOOK_PROD
+   on:
+     branch: master
+
 notifications:
   email: false
-
