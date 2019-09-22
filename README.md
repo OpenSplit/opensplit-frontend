@@ -1,5 +1,5 @@
 # opensplit-vuejs
-[![Build Status](https://travis-ci.org/OpenSplit/vuejs-frontend.svg?branch=master)](https://travis-ci.org/OpenSplit/vuejs-frontend)
+[![Build Status](https://travis-ci.org/OpenSplit/opensplit-frontend.svg?branch=master)](https://travis-ci.org/OpenSplit/opensplit-frontend)
 
 > new fancy webfrontend for the OpenSplit project
 
@@ -9,18 +9,12 @@ CSS-Framework: [bulma.io](https://bulma.io/)
 
 ``` bash
 # install dependencies
-npm install
+yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn run serve
 
 # build for production with minification
-npm run build
+yarn build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-foo

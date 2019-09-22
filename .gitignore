@@ -4,3 +4,4 @@ node_modules/
 docs/_book
 test/
 yarn-error.log
+dist/
