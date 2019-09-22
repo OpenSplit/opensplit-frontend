@@ -1,10 +1,8 @@
-FROM node:10 as builder
+FROM node:12 as builder
 WORKDIR /app
-COPY package.json /app/
-COPY package-lock.json /app/
-RUN npm install
 COPY . /app
-RUN npm run build
+RUN yarn install
+RUN yarn build --mode $ENV
 
 # Stage 2
 FROM nginx:mainline-alpine

@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10"
+  - "12"
 
 services:
   - docker
@@ -15,16 +15,15 @@ branches:
     - development
 
 before_script:
-  - npm install
+  - yarn install
 
 script:
-  - npm run lint
-  - npm run build
+  - if [ ${TRAVIS_BRANCH} == master ] ; then ENV=production IMAGE_TAG=stable; else ENV=staging IMAGE_TAG=development; fi
+  - yarn run lint
+  - yarn build --mode $ENV
 
 after_success:
-  - if [ ${TRAVIS_BRANCH} == master ] ; then ENV=production IMAGE_TAG=stable; else ENV=staging IMAGE_TAG=development; fi
-  - cp config/$ENV.js config/prod.env.js
-  - docker build -t $IMAGE:$IMAGE_TAG .
+  - docker build --build-arg ENV=$ENV -t $IMAGE:$IMAGE_TAG .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker push $IMAGE:$IMAGE_TAG
 
