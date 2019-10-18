@@ -12,7 +12,7 @@ CSS-Framework: [bulma.io](https://bulma.io/)
 yarn install
 
 # serve with hot reload at localhost:8080
-yarn run serve
+yarn serve
 
 # build for production with minification
 yarn build
